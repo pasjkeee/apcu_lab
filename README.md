@@ -18,3 +18,31 @@
 | script_var.js | Файл с определением переменных среды | ./js/ |
 | script_bez.js | Файл с функциями для кривой Безье | ./js/ |
 | script_bSpl.js | Файл с функциями для B-spline | ./js/ |
+
+_______
+
+## index.html
+
+В нём осуществляется подключение файла со стилями:
+
+```html
+     <link rel="stylesheet" type="text/css" href="style.css">
+```
+
+а также скрипт файлов .js
+
+```html
+    <script src="js/script_var.js"></script>
+    <script src="js/script_bez.js"></script>
+    <script src="js/script_bSpl.js"></script>
+```
+
+Так же осуществляется разметка блоков canvas, на которых будут отрисовываться кривые
+
+```html
+    <canvas id="bezier" width="220" height="220">
+    Ваш браузер не поддерживает canvas.
+    </canvas>
+```
+
+Каждому блоку присвоен уникальный id для обращения из файлов стилей `.css` и скрипт файлов `.js`
