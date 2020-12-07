@@ -265,11 +265,7 @@ _______
 ### Немного теории:
 
 
-Зададим вектор узлов 
-
-![ads](https://mathworld.wolfram.com/images/equations/B-Spline/NumberedEquation1.gif) 
-
-как неубывающую последовательность.  
+Зададим вектор узлов ![ads](https://mathworld.wolfram.com/images/equations/B-Spline/NumberedEquation1.gif) как неубывающую последовательность.  
 
 Узлы в этой последовательности могут повторяться. 
 
