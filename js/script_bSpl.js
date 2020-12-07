@@ -21,7 +21,7 @@ function getT(len) {
 console.log(getT());
 
 
-function getKdB(res, i, j, t) { //Ni - ti Np+1 - tk Np - порядок функции
+function getKdB(res, i, j, t) { 
     
     if(j === 0)
     {
