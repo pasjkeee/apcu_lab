@@ -35,7 +35,7 @@ function getKdB(res, i, j, t) { //Ni - ti Np+1 - tk Np - порядок функ
         return (memb1 * getKdB(res, i, j - 1, t) + memb2 * getKdB(res, i + 1, j - 1, t)); 
 }
 
-function getBezierCurve2(arr, step) {
+function getBspline(arr, step) {
     if (step === undefined) {
         step = 0.01;
     }
@@ -80,7 +80,7 @@ if (drawC && drawC.getContext) {
     arr[4] = new Array(210, 110);
     arr[5] = new Array(210, 10);
     arr[6] = new Array(110, 10);
-    flow = getBezierCurve2(new Array(...arr, 0.005));
+    flow = getBspline(new Array(...arr, 0.005));
     drawLines(ctx, flow, "blue");
     draw(ctx, new Array(...arr), "grey");
     drawLines(ctx02, flow, "green");
@@ -120,9 +120,16 @@ if (drawC && drawC.getContext) {
     arr1[8] = new Array(408, 26);
     arr1[9] = new Array(300, 200);
     arr1[10] = new Array(232, 37);
-    flow = getBezierCurve2(new Array(...arr1, 0.01));
+    flow = getBspline(new Array(...arr1, 0.01));
     drawLines(ctx03, flow, "red");
     draw(ctx03, new Array(...arr1), "grey");
+    const canv3 = document.querySelector('.canv3');
+    const el4 = document.createElement('div');
+    for(let j = 0; j < arr1.length; j++){
+       el4.insertAdjacentHTML('beforeend', `
+        Точка номер ${j+1} : x = ${arr1[j][0]} y = ${arr1[j][1]} <br>`);
+        canv3.append(el4);
+    }
 }
 
 
@@ -138,7 +145,16 @@ if (drawC && drawC.getContext) {
         let ar = new Array(x1, y1);
         arrUser.push(ar);
         ctx04.clearRect(0, 0, 1000, 1000);
-        flow = getBezierCurve2(new Array(...arrUser, 0.01));
+        flow = getBspline(new Array(...arrUser, 0.01));
         drawLines(ctx04, flow, "red");
         draw(ctx04, new Array(...arrUser), "grey");
+
+        const canv4 = document.querySelector('.canv4-item');
+        canv4.innerHTML = " ";
+        const el5 = document.createElement('div');
+        for(let j = 0; j < arrUser.length; j++){
+           el5.insertAdjacentHTML('beforeend', `
+            Точка номер ${j+1} : x = ${arrUser[j][0]} y = ${arrUser[j][1]} <br>`);
+            canv4.append(el5);
+        }
       });

@@ -65,3 +65,16 @@ body{
     justify-content: space-around;
     width: 100%;
 }
+
+.canv3,
+.canv4{
+    display: flex;
+    justify-content: space-around;
+}
+
+.canv3 div,
+.canv4-item{
+    margin: 50px;
+    font-size: 25px;
+    min-width: 30%;
+}
