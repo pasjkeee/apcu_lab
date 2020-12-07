@@ -101,9 +101,31 @@ const ctx = drawC.getContext('2d'),
 `2d` ведёт к созданию объекта `CanvasRenderingContext2D`, представляющий двумерный контекст.
 
 
+_______
+
+## script_bez.js
+
+### Немного теории:
+Кривая Безье является частным случаем многочленов Бернштейна, представляет собой параметрическую кривую и задаётся выражением:
+
+![Иллюстрация к проекту](https://wikimedia.org/api/rest_v1/media/math/render/svg/3ee11d1b4d207a9b6fd9463bbbc9cbd649c07294)
 
 
+Файл включает в себя 4 основные функции:
 
+
+### `getBezierBasis`
+
+```javascript
+function getBezierBasis(i, n, t) {
+    function f(n) {
+        return (n <= 1) ? 1 : n * f(n - 1);
+    }
+    return (f(n)/(f(i)*f(n - i)))* Math.pow(t, i)*Math.pow(1 - t, n - i);
+}
+```
+
+Это базисная функция кривой Безье. Этот коэффициент, определяет вес опорной точки. Является собственно полином Бернштейна:
 
 
 
