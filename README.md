@@ -75,8 +75,30 @@ align-items    /* Свойство flex блока */
 overflow       /* Отображение контента за пределами блока */
 ```
 
+_______
+
+## script_var.js
+
+В файле задаются необходимые пременные для взаимодействия скрипт `.js` файлов с блоками `canvas` в `index.html`
 
 
+```javascript
+const drawC = document.getElementById('bezier'),
+      drawC01 = document.getElementById('bezier01'),
+      drawC02 = document.getElementById('bezier02'),
+      drawC03 = document.getElementById('bezier03'),
+      drawC04 = document.getElementById('bezier04');
+const ctx = drawC.getContext('2d'),
+      ctx01 = drawC01.getContext('2d'),
+      ctx02 = drawC02.getContext('2d'),
+      ctx03 = drawC03.getContext('2d'),
+      ctx04 = drawC04.getContext('2d');
+```
+
+Метод `document.getElementById()` возвращает ссылку на элемент, который имеет атрибут id с указанным значением.
+
+Метод `HTMLCanvasElement.getContext()` возвращает контекст рисования на холсте.
+`2d` ведёт к созданию объекта `CanvasRenderingContext2D`, представляющий двумерный контекст.
 
 
 
