@@ -262,7 +262,7 @@ _______
 
 ## script_bSpl.js
 
-### Немного теории:
+### Ещё немного теории:
 
 
 Зададим вектор узлов ![ads](https://mathworld.wolfram.com/images/equations/B-Spline/NumberedEquation1.gif) как неубывающую последовательность.  
@@ -273,14 +273,14 @@ _______
 
 Зададим контрольные точки D = ![sdfdf](https://gamedev.ru/files/images/image029.gif) (по аналогии с кривой Безье).
 
-Число p = m - n - 1 называют - степенью b-spline’a. 
+Число `p = m - n - 1` называют - степенью b-spline’a. 
 
 Определение б-сплайна вводится так: 
 
 ![sdsdffdf](https://mathworld.wolfram.com/images/equations/B-Spline/NumberedEquation3.gif)
 
-Nip(t) - базисная функция (i, p)
-Pi  - контрольная точка i
+`Nip(t)` - базисная функция (i, p)
+`Pi`  - контрольная точка i
 
 Значение точки кривой в узловой точке C(ti) называют узловой точкой.
 
@@ -291,4 +291,131 @@ Pi  - контрольная точка i
 Если вектор узлов не обладает никакой специфической структурой, то получаемая кривая не будет касаться первого и последнего отрезка полилинии, построенной по контрольным точкам. Такие кривые называют открытыми (open B-Spline).
 
 
+Файл включает в себя 3 основные функции:
 
+_______
+
+
+ ### `drawLines`
+ 
+ 
+ ```javascript
+ function getT(len) {
+    len = len - 2;
+    console.log(len);
+    let t = [];
+    let p = 2; 
+    let n = len;
+    let x = p + n + 2;
+    for (let i = 0; i < p + 1; i++) {
+        t[i] = 0;
+    }
+    for (let i = p + 1; i < x - p - 1; i++) {
+        t[i] = (i - p) / (n - p + 1);
+    }
+    for (let i = x - p - 1; i < x; i++) {
+        t[i] = 1;
+    }
+    return t;
+}
+ ```
+ 
+ Функция для расчёта вектора параметризации. 
+ 
+ На вход подаётся агрумент `len` - длина массива входных точек.
+ 
+ Длина его равна `n+p+2`.
+
+ Первые `p + 1` точки равны 0
+ 
+ Последние `p + 1` точки равны 1
+ 
+ 
+ 
+_______
+
+
+ ### `getKdB`
+ 
+ 
+  ```javascript
+ function getKdB(res, i, j, t) { 
+    
+    if(j === 0)
+    {
+        if( t >= res[i] && t < res[i + 1]){
+            return 1; } else {
+                return 0;
+            }
+    } 
+        let memb1 = (res[i+j] - res[i]) ? ((t - res[i]) / (res[i + j] - res[i])) : 0,
+            memb2 = (res[i + j + 1] - res[i + 1]) ? ((res[i + j + 1] - t) / (res[i + j + 1] - res[i + 1])) : 0;
+        return (memb1 * getKdB(res, i, j - 1, t) + memb2 * getKdB(res, i + 1, j - 1, t)); 
+}
+ ```
+ 
+ 
+ Функция, реализующая формулу Кокса-де-Бура.
+ 
+  На вход подаются агрументы:
+  
+  `res` - вектор параметризации
+  
+  `i` - номер входной контрольной точки
+  
+  `j` - степень B-spline
+  
+  `t` - шаг с которым будут вычисляться точки массива для построения сплайна
+  
+  
+  _______
+
+
+ ### `getBspline`
+ 
+ 
+  ```javascript
+  
+  function getBspline(arr, step) {
+    if (step === undefined) {
+        step = 0.01;
+    }
+    
+    let res = [];
+    let t1 = getT(arr.length);
+    step = step / arr.length;
+    
+    for (let t = 0.0; t < 1; t += step) {
+        if (t > 1) {
+            t = 1;
+        }
+        
+        let ind = res.length;
+        
+        res[ind] = new Array(0, 0);
+        for (let i = 0; i < arr.length - 1; i++) 
+        {
+            let b = getKdB(t1, i, 2, t);
+            res[ind][0] += arr[i][0] * b;
+            res[ind][1] += arr[i][1] * b;
+        }
+    }
+    
+            
+    console.log(res);
+    return res;
+}
+  
+  ```
+  
+  Это функция возвращает массив точек 'res' по которым будет строиться кривая
+ 
+ Она приминимает как аргументы:
+ 
+ `arr` - массив входных точек
+ 
+ `step` - шаг с которым будет строится массив для построения кривой
+ 
+  Входной шаг делится на длину массива для лучшей точности
+ 
+ 
