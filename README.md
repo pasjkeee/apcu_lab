@@ -302,7 +302,6 @@ _______
  ```javascript
  function getT(len) {
     len = len - 2;
-    console.log(len);
     let t = [];
     let p = 2; 
     let n = len;
@@ -401,8 +400,6 @@ _______
         }
     }
     
-            
-    console.log(res);
     return res;
 }
   
