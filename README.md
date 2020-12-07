@@ -122,6 +122,7 @@ b(t) — базисная функция кривой Безье.
 
 Файл включает в себя 4 основные функции:
 
+_______
 
 ### `getBezierBasis`
 
@@ -141,14 +142,91 @@ function getBezierBasis(i, n, t) {
 где ![бзаис1](https://wikimedia.org/api/rest_v1/media/math/render/svg/bc715fc56b0183482b26546b19834ca97a64990a)
 это число сочетаний из n по i, где n — степень полинома, i — порядковый номер опорной вершины.
 
+_______
 
+### `getBezierCurve(arr, step, w)`
 
+```javascript
+function getBezierCurve(arr, step, w) {
+    if (step === undefined) {
+        step = 0.01;
+    }
+    var res = [];
 
+    step = step / arr.length;
+    
+    for (var t = 0.0; t < 1 + step; t += step) {
+        if (t > 1) {
+            t = 1;
+        }
+        
+        var ind = res.length;
+        
+        res[ind] = new Array(0, 0, 0, 0);
+        
+        for (var i = 0; i < arr.length; i++) 
+        {
+            var b = getBezierBasis(i, arr.length - 1, t);
+            
+            res[ind][0] += arr[i][0] * b*w[i];
+            res[ind][1] += b*w[i];
+            res[ind][2] += arr[i][1] * b*w[i];
+            res[ind][3] += b*w[i];
+        }
+        res[ind][0]=res[ind][0]/res[ind][1];
+        res[ind][1]=res[ind][2]/res[ind][3];
+    }
+    return res;
+}
+```
+ Это функция возвращает массив точек 'res' по которым будет строиться кривая
+ 
+ Она приминимает как аргументы:
+ 
+ `arr` - массив входных точек
+ 
+ `step` - шаг с которым будет строится массив для построения кривой
+ 
+  Входной шаг делится на длину массива для лучшей точности
+ 
+ `w` - массив выесов для каждой входной точки
+ 
+ _______
+ 
+ 
+ ### `drawLines` и `draw`
+ 
+```javascript 
+function drawLines(ctx, arr, linecolor) {
+    var i = 0;
 
+    function delayDraw(linecolor) {
+        if (i >= arr.length - 1) {
+            return;
+        }
 
+        ctx.moveTo(arr[i][0],arr[i][1]);
+        ctx.lineTo(arr[i+1][0],arr[i+1][1]);
+        ctx.strokeStyle = linecolor;
+        ctx.stroke();
+        ++i;
+        delayDraw(linecolor);
+    }
+        delayDraw(linecolor);
+}
 
+function draw(ctx, arr, linecolor) {
+    ctx.beginPath();
+    ctx.moveTo(arr[0][0],arr[0][1]);
+     for(var i=1; i<arr.length;i++)
+     {
+      ctx.lineTo(arr[i][0],arr[i][1]);
+     }
+     ctx.strokeStyle = linecolor;
+      ctx.stroke();
+    }
 
-
+```
 
 
 
