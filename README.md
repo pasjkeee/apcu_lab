@@ -25,21 +25,14 @@
 
 directory
 
-├── index.html
-
-├── style.css
-
-├── README.md
-
-├── js/
-
-│    ├── script_var.js
-
-│    ├── script_bez.js
-
-│    └── script_bSpl.js
-
-└── src/ ...
+├── index.html <br>
+├── style.css  <br>
+├── README.md  <br>
+├── js/   <br>
+│    ├── script_var.js   <br>
+│    ├── script_bez.js   <br>
+│    └── script_bSpl.js  <br>
+└── src/ ...   <br>
 
 _______
 
