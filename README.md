@@ -1,6 +1,6 @@
 # Можно запустить прямо в браузере
 
-https://jsfiddle.net/pasjkeee/0Lnpwgjo/3/
+https://jsfiddle.net/pasjkeee/0Lnpwgjo/14/
 
 (чертёж B-spline'a пользователем не до конца корректно работает на этом сайте)
 
