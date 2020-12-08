@@ -1,3 +1,7 @@
+# Можно запустить прямо в браузере
+
+https://jsfiddle.net/pasjkeee/0Lnpwgjo/3/
+
 ## ТЗ
 
 Построить:
