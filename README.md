@@ -23,7 +23,7 @@
 ## Структура фалов:
 
 <pre>
-directory
+apcu_lab
 ├── index.html 
 ├── style.css  
 ├── README.md  
