@@ -19,6 +19,19 @@
 | script_bez.js | Файл с функциями для кривой Безье | ./js/ |
 | script_bSpl.js | Файл с функциями для B-spline | ./js/ |
 
+
+## Структура фалов:
+
+directory
+├── index.html
+├── style.css
+├── README.md
+├── js/
+│    ├── script_var.js
+│    ├── script_bez.js
+│    └── script_bSpl.js
+└── src/ ...
+
 _______
 
 ## index.html
