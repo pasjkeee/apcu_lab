@@ -316,7 +316,7 @@ _______
 _______
 
 
- ### `drawLines`
+ ### `getT`
  
  
  ```javascript
