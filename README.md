@@ -146,6 +146,7 @@ b(t) — базисная функция кривой Безье.
 
 Файл включает в себя 4 основные функции:
 
+
 _______
 
 ### `getBezierBasis`
@@ -217,6 +218,9 @@ function getBezierCurve(arr, step, w) {
  
  _______
  
+# Результат работы: 3/4 окружности
+
+![11](https://github.com/pasjkeee/apcu_lab/blob/master/src/11.JPG?raw=true)
  
 # ====================================
 #     Функции отрисовки  
@@ -452,6 +456,32 @@ _______
  
  
   _______
+  
+  # Результат отрисовки
+  
+  # Открытый Б-сплайн
+  
+  ![22](https://github.com/pasjkeee/apcu_lab/blob/master/src/22.JPG?raw=true)
+  
+  # Совмещенная картинка Б-сплайн и кривая Безье
+  
+  ![33](https://github.com/pasjkeee/apcu_lab/blob/master/src/33.JPG?raw=true)
+  
+  # Б-сплайн по 11 опорным точкам
+  
+  ![44](https://github.com/pasjkeee/apcu_lab/blob/master/src/44.JPG?raw=true)
+  
+  # Б-сплайн - нарисуй сам
+  
+  ![66](https://github.com/pasjkeee/apcu_lab/blob/master/src/66.JPG?raw=true)
+  
+  ![77](https://github.com/pasjkeee/apcu_lab/blob/master/src/77.JPG?raw=true)
+  
+  ![88](https://github.com/pasjkeee/apcu_lab/blob/master/src/88.JPG?raw=true)
+  
+  ![99](https://github.com/pasjkeee/apcu_lab/blob/master/src/99.JPG?raw=true)
+  
+  ![111](https://github.com/pasjkeee/apcu_lab/blob/master/src/111.JPG?raw=true)
  
  
  ### Дополнительно
