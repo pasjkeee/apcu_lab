@@ -81,9 +81,9 @@ if (drawC && drawC.getContext) {
     arr[5] = new Array(210, 10);
     arr[6] = new Array(110, 10);
     flow = getBspline(new Array(...arr, 0.005));
-    drawLines(ctx, flow, "blue");
+    draw(ctx, flow, "blue");
     draw(ctx, new Array(...arr), "grey");
-    drawLines(ctx02, flow, "green");
+    draw(ctx02, flow, "green");
     draw(ctx02, new Array(...arr), "red");
     const b = document.getElementsByClassName('bspline');
     const element = document.createElement('div');
@@ -121,7 +121,7 @@ if (drawC && drawC.getContext) {
     arr1[9] = new Array(300, 200);
     arr1[10] = new Array(232, 37);
     flow = getBspline(new Array(...arr1, 0.01));
-    drawLines(ctx03, flow, "red");
+    draw(ctx03, flow, "red");
     draw(ctx03, new Array(...arr1), "grey");
     const canv3 = document.querySelector('.canv3');
     const el4 = document.createElement('div');
@@ -146,7 +146,7 @@ if (drawC && drawC.getContext) {
         arrUser.push(ar);
         ctx04.clearRect(0, 0, 1000, 1000);
         flow = getBspline(new Array(...arrUser, 0.01));
-        drawLines(ctx04, flow, "red");
+        draw(ctx04, flow, "red");
         draw(ctx04, new Array(...arrUser), "grey");
 
         const canv4 = document.querySelector('.canv4-item');

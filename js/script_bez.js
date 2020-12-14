@@ -95,19 +95,23 @@ if (drawC && drawC.getContext) {
     arr[8] = new Array(110, 10);
     const flow3 = getBezierCurve(new Array(arr[6], arr[7], arr[8]), 0.005, new Array(1, 1/Math.sqrt(2), 1)); 
     var flows = flow1.concat(flow2, flow3);
-    drawLines(ctx, flows, "green");
+    draw(ctx, flows, "green");
     draw(ctx, new Array(...arr), "red");
-    drawLines(ctx01, flows, "red");
+    draw(ctx01, flows, "red");
     draw(ctx01, new Array(arr[0], arr[1], arr[2],arr[3], arr[4], arr[5],arr[6], arr[7], arr[8]), "green");
    
 
     const a = document.getElementsByClassName('bez');
     console.log(a);
     const element = document.createElement('div');
+    let jj = 0;
     for(let j = 0; j < arr.length; j++){
+        if(j%3 != 0 || j==0){
+            jj++;
        element.insertAdjacentHTML('beforeend', `
-        Точка номер ${j+1} : x = ${arr[j][0]} y = ${arr[j][1]} <br>`);
+        Точка номер ${jj} : x = ${arr[j][0]} y = ${arr[j][1]} <br>`);
         a[0].append(element);
+        }
     }
     const el3 = document.createElement('div');
     element.insertAdjacentHTML('beforeend', `
