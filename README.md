@@ -227,26 +227,9 @@ function getBezierCurve(arr, step, w) {
 # ====================================
  
  
- ### `drawLines` и `draw`
+ ### `draw`
  
 ```javascript 
-function drawLines(ctx, arr, linecolor) {
-    var i = 0;
-
-    function delayDraw(linecolor) {
-        if (i >= arr.length - 1) {
-            return;
-        }
-
-        ctx.moveTo(arr[i][0],arr[i][1]);
-        ctx.lineTo(arr[i+1][0],arr[i+1][1]);
-        ctx.strokeStyle = linecolor;
-        ctx.stroke();
-        ++i;
-        delayDraw(linecolor);
-    }
-        delayDraw(linecolor);
-}
 
 function draw(ctx, arr, linecolor) {
     ctx.beginPath();
